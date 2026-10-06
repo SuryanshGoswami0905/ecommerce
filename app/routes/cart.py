@@ -8,7 +8,6 @@ from app.models.inventory import Inventory
 cart_bp = Blueprint('cart', __name__)
 
 
-
 @cart_bp.route('/cart/items', methods=['POST'])
 def add_to_cart():
     data = request.get_json()
@@ -47,7 +46,6 @@ def add_to_cart():
     ).first()
 
     if existing_item:
-    
         existing_item.quantity += quantity
     else:
         new_item = CartItem(
@@ -61,7 +59,6 @@ def add_to_cart():
     return jsonify({"message": "Item added to cart"}), 201
 
 
-# Cart dekho
 @cart_bp.route('/cart/<int:user_id>', methods=['GET'])
 def get_cart(user_id):
 
@@ -89,7 +86,7 @@ def get_cart(user_id):
     return jsonify({"items": result, "total": total}), 200
 
 
-# Cart se item hatao
+
 @cart_bp.route('/cart/items/<int:item_id>', methods=['DELETE'])
 def remove_from_cart(item_id):
 

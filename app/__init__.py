@@ -23,5 +23,7 @@ def create_app():
 
         from app.routes.products import products_bp
         app.register_blueprint(products_bp, url_prefix='/api/v1')
-        
-    return app
+
+        from app.routes.cart import cart_bp
+        app.register_blueprint(cart_bp, url_prefix='/api/v1')
+    return app  
